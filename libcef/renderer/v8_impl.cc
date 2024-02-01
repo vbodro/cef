@@ -461,7 +461,7 @@ void GetCefString(v8::Isolate* isolate,
 
 #if defined(CEF_STRING_TYPE_WIDE)
   // Allocate enough space for a worst-case conversion.
-  int len = str->Utf8Length();
+  int len = str->Utf8Length(isolate);
   if (len == 0) {
     return;
   }
@@ -483,7 +483,7 @@ void GetCefString(v8::Isolate* isolate,
   str->Write(isolate, reinterpret_cast<uint16_t*>(buf), 0, len + 1);
 #else
   // Allocate enough space for a worst-case conversion.
-  int len = str->Utf8Length();
+  int len = str->Utf8Length(isolate);
   if (len == 0) {
     return;
   }
